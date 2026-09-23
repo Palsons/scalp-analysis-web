@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delete Account · Scalp Analysis Pro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <p class="brand"><a href="index.html">Scalp Analysis Pro</a></p>
+      <p class="tagline">Delete your account</p>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms and Conditions</a>
+        <a href="delete-account.html" aria-current="page">Delete Account</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <article class="card">
+      <h1>Delete your Scalp Analysis Pro account</h1>
+      <p class="updated">For medical representative accounts</p>
+      <p>You can ask us to delete your Scalp Analysis Pro account from this page. You do not need the app installed to send a request.</p>
+
+      <h2>How to request deletion</h2>
+      <ol class="steps">
+        <li>Enter the name, email address, and employee ID on the account.</li>
+        <li>Confirm that you want the account deleted.</li>
+        <li>Submit the form. It opens an email to <a href="mailto:developer@palsonsderma.com">developer@palsonsderma.com</a> with your details.</li>
+        <li>Send that email. We will verify the request and delete the account within 30 days.</li>
+      </ol>
+      <p>If the form does not open your email app, send the same details yourself to <a href="mailto:developer@palsonsderma.com?subject=Delete%20Scalp%20Analysis%20Pro%20account">developer@palsonsderma.com</a>.</p>
+
+      <form id="delete-form">
+        <label>
+          Full name
+          <input name="name" type="text" autocomplete="name" required>
+        </label>
+        <label>
+          Registered email
+          <input name="email" type="email" autocomplete="email" required>
+        </label>
+        <label>
+          Employee ID
+          <input name="employeeId" type="text" required>
+        </label>
+        <label>
+          Phone number (optional)
+          <input name="phone" type="tel" autocomplete="tel">
+        </label>
+        <label class="check">
+          <input name="confirm" type="checkbox" required>
+          <span>I want my Scalp Analysis Pro account and the profile data listed below to be deleted.</span>
+        </label>
+        <button type="submit">Email deletion request</button>
+        <p class="status" id="status" role="status"></p>
+      </form>
+
+      <h2>Data we delete</h2>
+      <p>Within 30 days of a verified request we delete:</p>
+      <ul>
+        <li>Your name, email, phone number, and employee ID</li>
+        <li>Your password hash and sign-in access</li>
+        <li>Your profile photo</li>
+        <li>Your assignment to camps</li>
+      </ul>
+
+      <h2>Data we may keep</h2>
+      <p>We may keep the following for up to 3 years, or longer if the law requires it:</p>
+      <ul>
+        <li>Camp visit records (doctor, clinic, city, and dates) needed for the organization’s operations. Your name is removed from those records where it is practical to do so.</li>
+        <li>Patient registrations, scalp photographs, and reports. These are camp records and are not deleted only because a representative account is closed.</li>
+        <li>A short record that a deletion request was received and completed, without your password or profile photo.</li>
+      </ul>
+      <p>To ask about patient images or reports, email the same address and include the patient name and camp, if you know them.</p>
+    </article>
+  </main>
+  <footer>
+    <div class="footer-inner">Scalp Analysis Pro · <a href="mailto:developer@palsonsderma.com">developer@palsonsderma.com</a></div>
+  </footer>
+  <script>
+    document.getElementById("delete-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+      var data = new FormData(event.target);
+      var body = [
+        "Please delete my Scalp Analysis Pro account.",
+        "",
+        "Name: " + data.get("name"),
+        "Email: " + data.get("email"),
+        "Employee ID: " + data.get("employeeId"),
+        "Phone: " + (data.get("phone") || "Not provided")
+      ].join("\n");
+      var link = "mailto:developer@palsonsderma.com?subject=" +
+        encodeURIComponent("Delete Scalp Analysis Pro account") +
+        "&body=" + encodeURIComponent(body);
+      window.location.href = link;
+      document.getElementById("status").textContent =
+        "Your email app should open with the request. Send the message to finish.";
+    });
+  </script>
+</body>
+</html>
